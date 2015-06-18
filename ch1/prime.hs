@@ -18,3 +18,11 @@ ldf k n | divides k n = k
 prime0 n | n < 1     = error "not a positive number."
          | n == 1    = False
          | otherwise = ld n == n
+
+-- Section 1.7
+-- prime factorization
+-- Calculate the prime factors of n
+factors :: Integer -> [Integer]
+factors n | n < 1  = error "argument not positive" 
+          | n == 1 = []
+          | otherwise = p : factors (n `div` p) where p = ld n

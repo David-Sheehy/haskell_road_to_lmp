@@ -69,11 +69,12 @@ blowup' n (c:cs) = replicate n c ++ (blowup' (succ n) cs)
 
 
 -- 1.15
+-- A selection sort algorithm.
 srtString :: [String] -> [String]
 srtString [s]    = [s]
-srtString (ss) = let 
-                   s = minStr ss
-                 in  s : srtString (removeFst s ss)
+srtString (ss)   = let 
+                     s = minStr ss
+                   in  s : srtString (removeFst s ss)
 
 -- helper function for the srtString
 -- Returns the lowest alphabetic string in an array
@@ -88,6 +89,6 @@ minStr (s:ss) = min s (minStr ss)
 substring :: String -> String -> Bool
 substring [] [] = False
 substring xs [] = False
-substring xs ys | xs `prefix` ys = True
+substring xs ys | xs `prefix` ys        = True
                 | length xs > length ys = False
-                | otherwise      = substring xs (tail ys)
+                | otherwise             = substring xs (tail ys)
