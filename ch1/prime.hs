@@ -14,3 +14,7 @@ ld n = ldf 2 n
 ldf k n | divides k n = k
         | k^2 > n     = n
         | otherwise   = ldf (succ k) n
+
+prime0  | n < 1     = error "not a positive number."
+        | n == 1    = False
+        | otherwise = ld n == n
